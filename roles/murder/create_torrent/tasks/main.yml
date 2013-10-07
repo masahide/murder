@@ -1,0 +1,13 @@
+
+- name: create tar.gz
+  shell: tar -c -z -C {{ seeder_files_path }}/ -f {{ filename }} {{ tar_options }} .
+  tags: create_tgz
+
+- name: create torrent
+  shell: python {{ remote_murder_path }}/murder_make_torrent.py '{{ filename }}' {{ tracker_host }}:{{ tracker_port }} '{{ filename }}.torrent'
+  tags: create_torrent
+
+- name: fetch torrent
+  fetch: src={{ filename }}.torrent dest={{ torrent_path }}/{{ filename|basename }}.torrent
+  tags: fetch_torrent
+

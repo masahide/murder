@@ -1,0 +1,10 @@
+
+- name: set tagname to filename
+  set_fact: filename={{ default_temp_path }}/{{ tag }}.tar.gz
+  tags: common
+
+- name: set tracker ip
+  set_fact: tracker_host={{ hostvers['tracker']['ansible_default_ipv4']['address'] }}
+  tags: common
+
+

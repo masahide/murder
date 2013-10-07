@@ -1,0 +1,23 @@
+# The global variable file 
+
+# path
+default_temp_path: /tmp
+torrent_path: . 
+destination_path: /tmp
+
+
+# path permission
+destination_owner=root 
+destination_group=root
+destination_mod=755
+
+# default tracker host
+tracker_host: 127.0.0.1
+tracker_port: 8998
+
+
+# tar options
+tar_options: --exclude ".git*" --exclude ".svn*" 
+
+no_tag_directory: false
+unsafe_please_delete: false
