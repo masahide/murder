@@ -1,0 +1,13 @@
+
+
+- name: Create a torrent
+  hosts: seeder
+  sudo: yes
+  roles:
+    - murder/create_torrent
+
+- name: Start seeding
+  hosts: seeder
+  sudo: yes
+  roles:
+    - murder/start_seeding

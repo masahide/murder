@@ -7,17 +7,20 @@ torrent_path: .
 destination_path: /tmp
 remote_murder_path: /usr/local/murder
 
+seeder_files_path: ~/roles
+tag: deploy_test1
+
 
 # path permission
-destination_owner=root 
-destination_group=root
-destination_mod=755
+destination_owner: root 
+destination_group: root
+destination_mod: 755
 
 # default tracker host
 tracker_host: 127.0.0.1
 tracker_port: 8998
 
-murder_dist_tgz_file: murder_dist_upload.tar.gz
+murder_dist_tgz_file: /tmp/murder_dist_upload.tar.gz
 
 # tar options
 tar_options: --exclude ".git*" --exclude ".svn*" 

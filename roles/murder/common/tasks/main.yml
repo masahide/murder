@@ -4,7 +4,7 @@
   tags: common
 
 - name: set tracker ip
-  set_fact: tracker_host={{ hostvers['tracker']['ansible_default_ipv4']['address'] }}
+  set_fact: tracker_host={{ hostvars[groups['tracker'][0]]['ansible_default_ipv4']['address'] }}
   tags: common
 
 

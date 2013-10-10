@@ -28,7 +28,7 @@
   copy: src={{ torrent_path }}/{{ filename|basename }}.torrent dest={{ filename }}.torrent
   tags: peer
 
-- name:  run muder_client.py
+- name:  run murder_client.py
   shell: python {{ remote_murder_path }}/murder_client.py peer '{{ filename }}.torrent' '{{filename}}' {{ ansible_default_ipv4['address'] }}
   tags: peer
 
