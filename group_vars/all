@@ -1,9 +1,11 @@
 # The global variable file 
 
 # path
+ansible_cache_path: /var/lib/ansible
 default_temp_path: /tmp
 torrent_path: . 
 destination_path: /tmp
+remote_murder_path: /usr/local/murder
 
 
 # path permission
@@ -15,6 +17,7 @@ destination_mod=755
 tracker_host: 127.0.0.1
 tracker_port: 8998
 
+murder_dist_tgz_file: murder_dist_upload.tar.gz
 
 # tar options
 tar_options: --exclude ".git*" --exclude ".svn*" 

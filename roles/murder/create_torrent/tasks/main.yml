@@ -8,6 +8,6 @@
   tags: create_torrent
 
 - name: fetch torrent
-  fetch: src={{ filename }}.torrent dest={{ torrent_path }}/{{ filename|basename }}.torrent
+  fetch: src={{ filename }}.torrent dest={{ torrent_path }}/ flat=yes fail_on_missing=yes
   tags: fetch_torrent
 

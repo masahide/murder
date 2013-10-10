@@ -4,28 +4,20 @@
   when: not no_tag_directory
   tags: peer
 
-    if ENV['unsafe_please_delete']
-      run "rm -rf '#{destination_path}/'*"
-    end
-
-
 - name: mkdir destination_path
   file: path={{ destination_path }} state=directory owner={{ destination_owner }} group={{ destination_group }} mode={{ destination_mod }}
+  tags: peer
 
 - name: delete destination_path/*
   shell: rm -rf '{{ destination_path }}a/*'
   when: unsafe_please_delete
   tags: peer
 
-    if !ENV['no_tag_directory'] && !ENV['path_is_file']
-      run "find '#{destination_path}/'* >/dev/null 2>&1 && echo \"destination_path #{destination_path} on $HOSTNAME is not empty\" && exit 1 || exit 0"
-    end
-
 - name: check destination_path/*
   shell: |
     (
       find {{ destination_path }}/* >/dev/null 2>&1 &&
-      echo "destination_path {{destination_path}} on $HOSTNAME is not empty" &&
+      echo "destination_path {{ destination_path }} on $HOSTNAME is not empty" &&
       exit 1 
     ) ||
     exit 0
@@ -36,5 +28,11 @@
   copy: src={{ torrent_path }}/{{ filename|basename }}.torrent dest={{ filename }}.torrent
   tags: peer
 
-- name: 
-    run "python #{remote_murder_path}/murder_client.py peer '#{filename}.torrent' '#{filename}' `LC_ALL=C host $CAPISTRANO:HOST$ | awk '/has address/ {print $4}' | head -n 1`"
+- name:  run muder_client.py
+  shell: python {{ remote_murder_path }}/murder_client.py peer '{{ filename }}.torrent' '{{filename}}' {{ ansible_default_ipv4['address'] }}
+  tags: peer
+
+- name:  tar xf
+  shell: tar xf {{ filename }} -C "{{ destination_path }}"
+  tags: peer
+
