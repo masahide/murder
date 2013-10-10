@@ -17,7 +17,7 @@ destination_group: root
 destination_mod: 755
 
 # default tracker host
-tracker_host: 127.0.0.1
+tracker_host: 10.9.11.111
 tracker_port: 8998
 
 murder_dist_tgz_file: /tmp/murder_dist_upload.tar.gz

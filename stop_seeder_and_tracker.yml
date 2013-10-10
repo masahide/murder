@@ -9,5 +9,5 @@
   hosts: tracker
   sudo: yes
   roles:
-    - murder/stop_tracker
+    - admin/stop_tracker
 
